@@ -1,25 +1,26 @@
 <template>
   <div class="login">
   <form id="login" method="get" action="login.php">
-      <label><b>User Name
-      </b>
-      </label>
-      <input type="text" name="Uname" id="Uname" placeholder="Username" v-model="username">
-      <br><br>
-      <label><b>Password
-      </b>
-      </label>
-      <input type="Password" name="Pass" id="Pass" placeholder="Password" v-model="password">
-      <br><br>
-      <input type="button" name="log" id="log" value="Log In / Register" @click="onLoginCLicked">
-      <br><br>
-      <input type="checkbox" id="check">
-      <span class="rememberme">Remember me</span>
-      <br><br>
-      <a href="#">Forgot Password</a> >
+    <p v-if="loginerror" style="color: red"> Unable to log in, try again </p>
+    <label><b>User Name
+    </b>
+    </label>
+    <input type="text" name="Uname" id="Uname" placeholder="Username" v-model="username">
+    <br><br>
+    <label><b>Password
+    </b>
+    </label>
+    <input type="Password" name="Pass" id="Pass" placeholder="Password" v-model="password">
+    <br><br>
+    <input type="button" name="log" id="log" value="Log In / Register" @click="onLoginCLicked">
+    <br><br>
+    <input type="checkbox" id="check">
+    <span class="rememberme">Remember me</span>
+    <br><br>
+    <a href="#">Forgot Password</a> >
 
-      <br><br>
-      <img src ="../../public/BeeSmiling.png" width="150" height="150">
+    <br><br>
+    <img src ="../../public/BeeSmiling.png" width="150" height="150">
   </form>
 
 </div>
@@ -30,6 +31,7 @@ export default {
   name: 'HomeView',
   data() {
     return {
+      loginerror: false,
       username: "",
       password: "",
     }
@@ -44,14 +46,23 @@ export default {
         body: JSON.stringify({ username: this.username, password: this.password })
       };
 
-      const result = await fetch("http://127.0.0.1:5000/api/account/login", requestOptions).then((response) => response.json())
+      await fetch("http://127.0.0.1:5000/api/account/login", requestOptions).then((response) => response.json())
         .then((response) => {
         return response
         })
-      let userID = result.userID
-      console.log(userID)
-      //Returns undefined if the password is wrong needs to be fixed
-      this.$cookies.set("userID", userID)
+        .then((result) => {
+          let userID = result.userID
+          console.log("userID: " + userID)
+          this.$store.state.userID = userID
+          //Returns undefined if the password is wrong needs to be fixed
+          this.$cookies.set("userID", userID)
+          this.loginerror = false
+          this.$router.push("/ViewToDos")
+        })
+        .catch((error) => {
+          this.loginerror = true
+          console.log("error: " + error)
+        })
 
     }
   }
