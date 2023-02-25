@@ -1,4 +1,4 @@
 curl --header "Content-Type: application/json" \
-    --request GET \
-    --data '{"username":"xyz","password":"xyz"}' \
-    http://localhost:5000/api/account/login
+    --request POST \
+    --data '{"taskname":"buy milk"}' \
+    http://localhost:5000/api/add_todo
