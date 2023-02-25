@@ -1,20 +1,32 @@
 <template>
   <div>
+    <input type = "checkbox" @click= "onCheckBoxClicked">
+    {{ addtxt }} 
     <!-- <input type="checkbox" v-bind="complete"/> -->
     <!-- <h2>{{ text }}</h2> -->
-    <span>{{ task.complete }} | {{ task.text }}</span>
+    <span>{{ task.complete}} | {{ task.text }} </span>
   </div>
 </template>
 
 <script>
-export default {
+export default 
+{
   name: "TaskItem",
-  props: {
+  props: 
+  {
     task: Object,
-  }
+  },
+  methods: 
+  {
+      onCheckBoxClicked() 
+      {
+        console.log(this.complete)
+        console.log("CheckBox clicked!")
+      },
+  },
 }
 </script>
 
 <style>
-
+  
 </style>
