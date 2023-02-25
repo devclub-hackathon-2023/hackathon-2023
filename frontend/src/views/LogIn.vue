@@ -44,12 +44,14 @@ export default {
         body: JSON.stringify({ username: this.username, password: this.password })
       };
 
-      const result = await fetch("http://127.0.0.1:5000/api/account/login", requestOptions)
-
-
-      console.log("result: " + result.json())
-        let userID = result.json()["userID"]
-        this.$cookies.set("userID", userID)
+      const result = await fetch("http://127.0.0.1:5000/api/account/login", requestOptions).then((response) => response.json())
+        .then((response) => {
+        return response
+        })
+      let userID = result.userID
+      console.log(userID)
+      //Returns undefined if the password is wrong needs to be fixed
+      this.$cookies.set("userID", userID)
 
     }
   }
