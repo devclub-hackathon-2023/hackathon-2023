@@ -8,8 +8,12 @@ def create_file(user: json):
     file.close()       
 #end of write_file
 
-def read_file(filename):
-    pass
+def read_file(user: json):
+    userDict = json.loads(user)
+    try:
+        file = open(userDict)
+    except FileNotFoundError:
+        pass
 #end of read_file
 
 thing = {"username": "John", "pass": "ThisIsMyPassword"}
