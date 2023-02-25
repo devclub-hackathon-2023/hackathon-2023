@@ -10,12 +10,12 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/',
+    path: '/todos',
     name: 'To do lists',
     component: ViewToDos
   },
   {
-    path: '/Ptsview',
+    path: '/points',
     name: 'points',
     component: PtsView
   },

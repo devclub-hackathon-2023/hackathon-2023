@@ -1,15 +1,18 @@
 <template>
-  <div class="welcome">
-    {{ welcomeTxt }}
-  </div>
-  <div>
-    <div class="loginButton" @click="onLoginClicked">
-      {{ loginTxt }}
+  <div class="homeBackground">
+    <div class="welcome">
+      {{ welcomeTxt }}
     </div>
-    <div class="signupButton" @click="onSignUpClicked">
-      {{ signupTxt }}
+    <div>
+      <div class="loginButton" @click="onLoginClicked">
+        {{ loginTxt }}
+      </div>
+      <div class="signupButton" @click="onSignUpClicked">
+        {{ signupTxt }}
+      </div>
     </div>
   </div>
+  
 </template>
 
 <script>
@@ -34,9 +37,16 @@ export default {
 </script>
 
 <style>
+.homeBackground {
+  background-image: "../assets/honey-background.jpg";
+}
 .welcome {
   background-color: lightyellow;
   font-size: 16px;
   font-family: sans-serif;
+}
+
+.login {
+  border-style: 1px;
 }
 </style>
