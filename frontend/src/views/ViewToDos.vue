@@ -4,6 +4,8 @@
       <h1>Your To Do List:</h1>
     </div>
 
+    <taskItem v-for="task in tasks" :task="task" :key="task.id"/>
+
     <div class="checklist">
       <br>
 
@@ -22,27 +24,39 @@
 </template>
 
 <script>
+import taskItem from '@/components/taskItem.vue'
+
 export default 
 {
   name: "ViewToDos",
-  data() 
+  components: {
+    taskItem
+  },
+  data()
   {
     return {
-      tasks: [],
-      newTask: {
-        completed: false,
-        text: "",
-      },
+      tasks: [{id: 0, complete: false, text: "default task" }, {id: 1, complete: false, text: "default task 2" }],
+      newTask: "",
       welcomeTxt: "Select/Create a To-Do-List:",
       addtxt : "Update List",
     }
   },
   methods: 
   {
-    onAddTaskClicked() {
-      console.log("new task:" + this.newTask)
-      this.tasks.push(this.newTask)
-      this.newTask = ""
+    async onAddTaskClicked() {
+      console.log("new task: " + this.newTask)
+      
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ taskname: this.newTask, password: this.password })
+      };
+
+      const result = await fetch("http://127.0.0.1:5000/api/add_todo", requestOptions)
+
+      console.log("tasks: " + result.json())
+
+      this.tasks = result.json()
     }
   }
 }
