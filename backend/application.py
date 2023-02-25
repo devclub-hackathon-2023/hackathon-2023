@@ -18,7 +18,7 @@ def create_account():
     password = request.get_json()["password"]
     user_dict = {"username": username, "pass": password}
     fileIO.create_file(json.dumps(user_dict))
-    return "woohoo this thing is working"
+    return "woohoo this thing is working" # should be a cookie
 
 @app.get("/api/account/login")
 def login():
@@ -29,8 +29,8 @@ def login():
     user_file = fileIO.read_file(user_dict)
     if(user_file == -1):
         return "Error, user not instantiated"
-    user_dict = json.load(user_file)
+    user_dict = json.loads(user_file)
     if password == user_dict["pass"]:
-        return user_file
+        return user_file # should be a cookie
     else:
         return "Error, user password did not match"
