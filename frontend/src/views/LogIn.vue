@@ -39,9 +39,16 @@ export default {
     async onLoginCLicked() {
       console.log("Username: " + this.username + " | Password: " + this.password)
 
-      const result = await (await fetch("localhost:5000/api/account/login", {"username": this.username, "password": this.password})).json()
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username: this.username, password: this.password })
+      };
 
-      console.log("result: " + result)
+      const result = await fetch("http://127.0.0.1:5000/api/account/login", requestOptions)
+
+
+      console.log("result: " + result.json())
 
     }
   }
