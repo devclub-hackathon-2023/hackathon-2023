@@ -1,8 +1,17 @@
+import json
 
-def write_file(filename, user):
-    pass
+#user will be user{username: "", pass: ""}
+def create_file(user: json):
+    userDict = json.loads(user)
+    file = open(userDict['username'] + '.json', 'x')
+    file.write(user)
+    file.close()       
 #end of write_file
 
 def read_file(filename):
     pass
 #end of read_file
+
+thing = {"username": "John", "pass": "ThisIsMyPassword"}
+thing = json.dumps(thing)
+create_file(thing)
