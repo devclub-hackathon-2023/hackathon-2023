@@ -4,17 +4,9 @@
   
   <br>
 
-  <div class="welcomeContainer">
+  <p>ID: {{ this.$store.state.userID }}</p>
 
-      <button class="homeButton" v-text="loginTxt" @click="onLoginClicked"/>
-
-      <br><br>
-
-      <button class="homeButton" v-text="signupTxt" @click="onSignupClicked"/>
-
-      <br><br>
-
-  </div>
+  <button class="homeButton" v-text="loginTxt" @click="onLoginClicked"/>
   
 </template>
 
@@ -24,18 +16,12 @@ export default {
   data() {
     return {
       welcomeTxt: "Welcome to the Bee's Kneez",
-      loginTxt: "Login",
-      signupTxt: "Sign Up",
+      loginTxt: "Login / Register",
     }
   },
   methods: {
     onLoginClicked() {
       console.log("Login was clicked!")
-      this.$router.push("/login")
-    },
-    onSignupClicked() {
-
-      console.log("Signup was clicked!")
       this.$router.push("/login")
     }
   }
@@ -58,7 +44,7 @@ export default {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   font-size: 18px;
-  width: 80%;
+  width: 60%;
   margin: auto;
   padding: 10px;
   border-radius: 5px;
