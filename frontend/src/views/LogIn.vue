@@ -17,8 +17,12 @@
         <input type="checkbox" id="check">
         <span>Remember me</span>
         <br><br>
-        Forgot <a href="#">Password</a>
+        <a href="#">Forgot Password</a> >
+        
+        <br><br>
+        <img src ="../../public/BeeSmiling.png" width="150" height="150">
     </form>
+
 </div>
 </template>
 
@@ -32,7 +36,7 @@ body
 {
     margin: 0;
     padding: 0;
-    background-color:#6abadeba;
+    background-color:#f3e015ba;
     font-family: 'Arial';
 }
 .login{
@@ -41,17 +45,17 @@ body
         margin: auto;
         margin: 20 0 0 450px;
         padding: 80px;
-        background: #23463f;
+        background: #0c0f0e;
         border-radius: 15px ;
 
 }
 h2{
     text-align: center;
-    color: #277582;
+    color: #5d2901;
     padding: 20px;
 }
 label{
-    color: #08ffd1;
+    color: #d7dcdb;
     font-size: 17px;
 }
 #Uname{
@@ -75,7 +79,7 @@ label{
     border: none;
     border-radius: 17px;
     padding-left: 7px;
-    color: blue;
+    color: rgb(44, 24, 1);
 
 
 }
@@ -85,6 +89,7 @@ span{
 }
 a{
     float: right;
-    background-color: grey;
+    color: white;
+ 
 }
 </style>
