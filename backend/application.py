@@ -35,7 +35,7 @@ def login():
         return user_file # should be a cookie
     else:
         return "Error, user password did not match"
-@app.POST("/api/todo/")
+@app.post("/api/todo/")
 def add_todo():
     username = request
 
