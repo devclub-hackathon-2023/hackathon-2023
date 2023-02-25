@@ -3,8 +3,10 @@
 from flask import Flask, request, jsonify
 import json
 import fileIO
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 @app.get("/")
 def hello_world():
@@ -21,7 +23,7 @@ def create_account():
     user_dict = json.loads(user_dict)
     return user_dict["userID"] # should be a cookie
 
-@app.route('api/account/login',methods = ['POST', 'GET', 'OPTIONS'])
+@app.route('/api/account/login',methods = ['POST', 'GET', 'OPTIONS'])
 def login():
     username = request.get_json()["username"]
     password = request.get_json()["password"]

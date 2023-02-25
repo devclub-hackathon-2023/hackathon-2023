@@ -1,4 +1,4 @@
 curl --header "Content-Type: application/json" \
-    --request POST \
+    --request GET \
     --data '{"username":"xyz","password":"xyz"}' \
-    http://localhost:5000/api/account/create_account
+    http://localhost:5000/api/account/login
