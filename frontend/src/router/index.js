@@ -21,7 +21,7 @@ const routes = [
     component: PtsView
   },
   {
-    path: '/Login',
+    path: '/login',
     name: 'login',
     component: LogIn
   },
