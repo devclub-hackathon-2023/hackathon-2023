@@ -11,13 +11,9 @@ const routes = [
     component: HomeView
   },
   {
-<<<<<<< HEAD
+
     path: '/ViewToDos',
     name: 'ViewToDos',
-=======
-    path: '/todos',
-    name: 'todos',
->>>>>>> refs/remotes/origin/main
     component: ViewToDos
   },
   {

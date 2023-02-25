@@ -6,11 +6,17 @@
              <h1>Complete or Add to your list!</h1>
              <br>
              <form class="checklist" method="post">
-                 <p>Current To-Dos: </p><textarea id="comment" name="comments" rows="1" cols="20"></textarea>
+              <br> <br>
                  <button type="button" id="addListButton" @click="onAddNew()">
                   {{ addtxt }}
             </button>
+            <br>
+            <p> </p><textarea id="comment" name="comments" rows="1" cols="20"></textarea>
             </form>
+            <br><br>
+            <ul id="list"></ul>
+            <input type= "list" value = "addToList" id = "add">
+             
   </div>
   <div id = "textAdded">
   </div>
