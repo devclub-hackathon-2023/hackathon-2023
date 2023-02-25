@@ -14,7 +14,7 @@ def hello_world():
     sample_dict = json.dumps(sample_dict)
     return sample_dict
 
-@app.get("/api/account/create_account")
+@app.post("/api/account/create_account")
 def create_account():
     username = request.get_json()["username"]
     password = request.get_json()["password"]
