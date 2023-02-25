@@ -5,35 +5,19 @@
     </div>
 
     <div class="checklist">
-      <h1>Complete or Add to your list!</h1>
       <br>
-
-      <form class="checklist" method="post">
-
-        <br> <br>
-
-        <button type="button" id="addListButton" @click="onAddNew()">
-          {{ addtxt }}
-        </button>
-        <br>
-        <p> </p>
-        
-        <textarea id="comment" name="comments" rows="1" cols="20"></textarea>
-      </form>
-      <br><br>
-      <ul id="list"></ul>
 
       <h1>Add new task to list:</h1>
       <input type= "text" id="add" v-model="newTask.text">
-      <button value="add task" @click="onAddTaskClicked"> {{ addtxt }} </button>
+      <br><br>
+
+      <button value="add task" @click="onAddTaskClicked"> {{ addtxt }} </button><br><br>
       {{ tasks }}
-              
+      <br><br>
     </div>
   <div id = "textAdded">
 
-  </div>
-
-    
+  </div>    
 </template>
 
 <script>
