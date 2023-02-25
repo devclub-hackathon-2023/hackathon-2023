@@ -35,7 +35,7 @@ export default
   data()
   {
     return {
-      tasks: [{id: 0, complete: false, text: "default task" }, {id: 1, complete: false, text: "default task 2" }],
+      tasks: [{complete: false, text: "default task" }, {complete: false, text: "default task 2" }],
       newTask: "",
       welcomeTxt: "Select/Create a To-Do-List:",
       addtxt : "Update List",
