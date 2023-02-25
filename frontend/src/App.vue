@@ -1,15 +1,17 @@
 <template>
   <nav>
     <router-link to="/">Home</router-link> |
-    <router-link to= "/ViewToDos">Lists</router-link> |
-    <router-link to= "/Ptsview">Points</router-link>
+    <router-link to= "/todos">Lists</router-link> |
+    <router-link to= "/points">Points</router-link>
   </nav>
   <router-view/>
  
 </template>
 
 <script>
-
+export default {
+  name: "app"
+}
 </script>
 
 <style>
