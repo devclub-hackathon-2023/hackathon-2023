@@ -53,7 +53,7 @@ export default {
 .welcomeTxt {
   text-align: center;
   color: #5d2901;
-  padding: 20px;
+  padding: 25px;
 }
 
 </style>
