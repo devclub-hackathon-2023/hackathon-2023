@@ -67,7 +67,11 @@ def find_username_by_id():
     if not os.path.exists(USER_DIRECTORY):
         os.makedirs(USER_DIRECTORY)
     for file in (os.listdir(USER_DIRECTORY)):
-        userID_to_compare = fileIO.read_file(file)
+        print(os.listdir(USER_DIRECTORY))
+        file = file.strip('.json')
+        print(file)
+        dict = {"username": file}
+        userID_to_compare = fileIO.read_file(json.dumps(dict))
         userID_to_compare = json.loads(userID_to_compare)
         print(userID_to_compare) # DEBUG
     # for file in os.listdir(USER_DIRECTORY):
