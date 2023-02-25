@@ -11,7 +11,7 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/',
+    path: '/ViewToDos',
     name: 'To do lists',
     component: ViewToDos
   },
