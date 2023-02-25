@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView'
 import ViewToDos from '../views/ViewToDos'
+import PtsView from '../views/PtsView'
+
 const routes = [
   {
     path: '/',
@@ -11,6 +13,11 @@ const routes = [
     path: '/',
     name: 'To do lists',
     component: ViewToDos
+  },
+  {
+    path: '/Ptsview',
+    name: 'points',
+    component: PtsView
   },
 ]
 
