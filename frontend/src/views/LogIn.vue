@@ -1,5 +1,4 @@
 <template>
-  <h2>Login Page</h2><br>
   <div class="login">
   <form id="login" method="get" action="login.php">
       <label><b>User Name
@@ -12,7 +11,7 @@
       </label>
       <input type="Password" name="Pass" id="Pass" placeholder="Password" v-model="password">
       <br><br>
-      <input type="button" name="log" id="log" value="Log In Here" @click="onLoginCLicked">
+      <input type="button" name="log" id="log" value="Log In / Register" @click="onLoginCLicked">
       <br><br>
       <input type="checkbox" id="check">
       <span>Remember me</span>
