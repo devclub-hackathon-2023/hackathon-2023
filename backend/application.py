@@ -22,5 +22,12 @@ def create_account():
 
 @app.get("/api/account/login")
 def login():
-    pass
-
+    username = request.get_json()["username"]
+    password = request.get_json()["password"]
+    user_dict = {"username": username, "pass": password}
+    user_dict = json.dumps(user_dict)
+    user_file = json.load(fileIO.read_file(user_dict))
+    if password == user_file["pass"]:
+        return user_file
+    else:
+        return "some error"
