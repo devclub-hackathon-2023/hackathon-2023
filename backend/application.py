@@ -38,7 +38,7 @@ def login():
     else:
         return "Error, user password did not match"
 
-@app.post('/api/add_todo/')
+@app.post('/api/add_todo')
 def add_todo():
     print("hello")
     return "it worked!"
