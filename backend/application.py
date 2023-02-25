@@ -17,8 +17,9 @@ def create_account():
     username = request.get_json()["username"]
     password = request.get_json()["password"]
     user_dict = {"username": username, "pass": password}
-    fileIO.create_file(json.dumps(user_dict))
-    return "woohoo this thing is working" # should be a cookie
+    user_dict = fileIO.create_file(json.dumps(user_dict))
+    user_dict = json.loads(user_dict)
+    return user_dict["userID"] # should be a cookie
 
 @app.get("/api/account/login")
 def login():
