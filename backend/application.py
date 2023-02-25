@@ -17,14 +17,14 @@ def hello_world():
     sample_dict = json.dumps(sample_dict)
     return sample_dict
 
-@app.post("/api/account/create_account")
+# @app.post("/api/account/create_account")
 def create_account():
     username = request.get_json()["username"]
     password = request.get_json()["password"]
     user_dict = {"username": username, "pass": password}
     user_dict = fileIO.create_file(json.dumps(user_dict))
     user_dict = json.loads(user_dict)
-    return user_dict["userID"] # should be a cookie
+    return json.dumps(user_dict) # should be a cookie
 
 @app.post('/api/account/login')
 def login():
@@ -34,12 +34,21 @@ def login():
     user_dict = json.dumps(user_dict)
     user_file = fileIO.read_file(user_dict)
     if(user_file == -1):
-        return "Error, user not instantiated"
+        data = create_account()
     user_dict = json.loads(user_file)
     if password == user_dict["pass"]:
-        return user_file # should be a cookie
+        data =  user_file
     else:
         return "Error, user password did not match"
+        errDict = {"ERROR": "password no worky"}
+        data = json.dumps(errDict)
+    
+    return app.response_class(response= data, status=200, mimetype = 'application/json')
+
+@app.post("/api/todo/")
+def add_todo():
+    userID = request.get_json()["userID"]
+>>>>>>> a965b443e8663c237c71a3b998a4688f4e9993ff
 
 @app.post('/api/add_todo')
 def add_todo():
