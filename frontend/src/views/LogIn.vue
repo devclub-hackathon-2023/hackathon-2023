@@ -62,7 +62,9 @@ body
 {
   margin: 0;
   padding: 0;
-  background-color:#f3e015ba;
+  background-image: url(honeycomb-with-honey-background-vector-3621371.jpg) ;
+  
+  /* background-color:#f3e015ba; */
   font-family: 'Arial';
 }
 .login{
@@ -82,7 +84,7 @@ h2{
 }
 label{
   color: #d7dcdb;
-  font-size: 17px;
+  font-size: 20px;
 }
 #Uname{
   width: 300px;
@@ -103,7 +105,7 @@ label{
   width: 300px;
   height: 30px;
   border: none;
-  border-radius: 17px;
+  border-radius: 150px;
   padding-left: 7px;
   color: rgb(44, 24, 1);
 
