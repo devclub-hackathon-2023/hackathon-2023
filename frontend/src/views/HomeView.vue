@@ -31,10 +31,12 @@ export default {
   methods: {
     onLoginClicked() {
       console.log("Login was clicked!")
+      this.$router.push("/login")
     },
     onSignupClicked() {
+
       console.log("Signup was clicked!")
-      this.$router.go("/login")
+      this.$router.push("/login")
     }
   }
 }
