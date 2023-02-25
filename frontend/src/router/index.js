@@ -11,8 +11,13 @@ const routes = [
     component: HomeView
   },
   {
+<<<<<<< HEAD
     path: '/ViewToDos',
     name: 'ViewToDos',
+=======
+    path: '/todos',
+    name: 'todos',
+>>>>>>> refs/remotes/origin/main
     component: ViewToDos
   },
   {
@@ -21,7 +26,7 @@ const routes = [
     component: PtsView
   },
   {
-    path: '/Login',
+    path: '/login',
     name: 'login',
     component: LogIn
   },
