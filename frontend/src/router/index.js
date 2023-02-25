@@ -12,7 +12,7 @@ const routes = [
   },
   {
 
-    path: '/todos',
+    path: '/ViewToDos',
     name: 'ViewToDos',
     component: ViewToDos
   },
