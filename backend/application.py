@@ -4,9 +4,12 @@ from flask import Flask, request, jsonify
 import json
 import fileIO
 from flask_cors import CORS
+import os
 
 app = Flask(__name__)
 CORS(app)
+
+USER_DIRECTORY = "./users/"
 
 @app.get("/")
 def hello_world():
@@ -50,7 +53,20 @@ def login():
 
     return response
 
-@app.post("/api/todo/")
+@app.post('/api/add_todo')
 def add_todo():
     userID = request.get_json()["userID"]
+    find_username_by_id();
+    # username = find_username_by_id()
+    taskname = request.get_json()["taskname"]
+    # fileIO.create_file() # no username found yet
+    return "it worked!"
 
+def find_username_by_id():
+    if os.path.exists(USER_DIRECTORY):
+        for file in (os.listdir(USER_DIRECTORY)):
+            userID_to_compare = fileIO.read_file(file)
+            userID_to_compare = json.loads(userID_to_compare)
+    else:
+        os.makedirs(USER_DIRECTORY)
+    # for file in os.listdir(USER_DIRECTORY):
