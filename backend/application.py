@@ -27,19 +27,28 @@ def create_account():
 def login():
     username = request.get_json()["username"]
     password = request.get_json()["password"]
-    user_dict = {"username": username, "pass": password}
-    user_dict = json.dumps(user_dict)
-    user_file = fileIO.read_file(user_dict)
-    if(user_file == -1):
-        data = create_account()
-    user_dict = json.loads(user_file)
-    if password == user_dict["pass"]:
-        data =  user_file
+    if (username != '') and ( password != ''):
+        user_dict = {"username": username, "pass": password}
+        user_dict = json.dumps(user_dict)
+        user_file = fileIO.read_file(user_dict)
+        if(user_file == -1):
+            data = create_account()
+        user_dict = json.loads(user_file)
+        if password == user_dict["pass"]:
+            data =  user_file
+        else:
+            errDict = {"ERROR": "password no worky"}
+            data = json.dumps(errDict)
+        resp = json.loads(data)
     else:
-        errDict = {"ERROR": "password no worky"}
-        data = json.dumps(errDict)
-    
-    return app.response_class(response= data, status=200, mimetype = 'application/json')
+        errDict = {"ERROR": "you gave me some bad stuff"}
+        data = errDict
+    if(resp["ERROR"]):
+        response = app.response_class(response= data, status=403, mimetype = 'application/json')
+    else:
+        response = app.response_class(response= data, status=200, mimetype = 'application/json')
+
+    return response
 
 @app.post("/api/todo/")
 def add_todo():
