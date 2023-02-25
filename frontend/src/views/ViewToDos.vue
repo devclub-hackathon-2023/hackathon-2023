@@ -49,7 +49,7 @@ export default
       const requestOptions = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ taskname: this.newTask, password: this.password })
+        body: JSON.stringify({ userID: this.$store.state.userID, taskname: this.newTask })
       };
 
       const result = await fetch("http://127.0.0.1:5000/api/add_todo", requestOptions)

@@ -4,6 +4,8 @@
   
   <br>
 
+  <p>ID: {{ this.$store.state.userID }}</p>
+
   <button class="homeButton" v-text="loginTxt" @click="onLoginClicked"/>
   
 </template>

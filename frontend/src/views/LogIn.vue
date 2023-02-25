@@ -14,7 +14,7 @@
       <input type="button" name="log" id="log" value="Log In / Register" @click="onLoginCLicked">
       <br><br>
       <input type="checkbox" id="check">
-      <span>Remember me</span>
+      <span class="rememberme">Remember me</span>
       <br><br>
       <a href="#">Forgot Password</a> >
 
@@ -108,7 +108,7 @@ label{
 
 
 }
-span{
+.rememberme {
   color: white;
   font-size: 17px;
 }
