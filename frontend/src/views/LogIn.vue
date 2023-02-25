@@ -49,6 +49,8 @@ export default {
 
 
       console.log("result: " + result.json())
+        let userID = result.json()["userID"]
+        this.$cookies.set("userID", userID)
 
     }
   }
