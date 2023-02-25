@@ -1,10 +1,14 @@
 <template>
   <div>
-    <input type = "checkbox" @click= "onCheckBoxClicked">
+    <input type = "checkbox" v-model = "task.complete" @click= "onCheckBoxClicked">
     {{ addtxt }} 
     <!-- <input type="checkbox" v-bind="complete"/> -->
     <!-- <h2>{{ text }}</h2> -->
+
     <span>{{ task.complete}} | {{ task.text }} </span>
+    <div v-if="task.complete"></div>
+    <span>{{ task.complete }} | {{ task.text }}</span>
+
   </div>
 </template>
 
@@ -20,7 +24,7 @@ export default
   {
       onCheckBoxClicked() 
       {
-        console.log(this.complete)
+        console.log(this.task.complete)
         console.log("CheckBox clicked!")
       },
   },
