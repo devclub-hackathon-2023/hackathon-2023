@@ -1,9 +1,12 @@
 #this is a file, it's fun
 
-from flask import Flask
+from flask import Flask, request, jsonify
+import json
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.get("/")
 def hello_world():
-        return "<p>Hello, World!</p>"
+    sample_dict = {"test": "123", "testing": "456"}
+    sample_dict = json.dump(sample_dict)
+    return sample_dict
