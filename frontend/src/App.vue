@@ -1,7 +1,7 @@
 <template>
   <nav>
     <router-link to="/">Home</router-link> |
-    <router-link to="/todos">Lists</router-link> |
+    <router-link to="/ViewToDos">Lists</router-link> |
     <router-link to="/points">Points</router-link> |
     <router-link to="/login">Login</router-link>
   </nav>
@@ -35,7 +35,7 @@ nav a {
 }
 
 nav a.router-link-exact-active {
-  color: goldenrod;
+  color: brown;
 }
 
 </style>

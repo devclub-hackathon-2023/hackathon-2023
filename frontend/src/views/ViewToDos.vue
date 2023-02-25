@@ -12,6 +12,7 @@
       <br><br>
 
       <button value="add task" @click="onAddTaskClicked"> {{ addtxt }} </button><br><br>
+      <input type ="checkbox">
       {{ tasks }}
       <br><br>
     </div>
@@ -38,13 +39,6 @@ export default
   },
   methods: 
   {
-    onAddNew() 
-    {
-      document.getElementById("textAdded").innerText = document.getElementById("comment").value
-      var hello = document.getElementById("comment").value
-      console.log(hello)
-      console.log("Update list checked");
-    },
     onAddTaskClicked() {
       console.log("new task:" + this.newTask)
       this.tasks.push(this.newTask)
