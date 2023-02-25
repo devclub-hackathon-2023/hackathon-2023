@@ -34,3 +34,7 @@ def login():
         return user_file
     else:
         return "Error, user password did not match"
+@app.POST("/api/todo/")
+def add_todo():
+    username = request
+

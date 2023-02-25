@@ -1,11 +1,15 @@
 import json
+import uuid
 
 #user will be user{username: "", pass: ""}
-def create_file(user: json):
+def create_file(user: json) -> json:
     userDict = json.loads(user)
+    userDict["userID"] = uuid.uuid4()
+    user = json.dumps(userDict)
     file = open(userDict['username'] + '.json', 'w')
     file.write(user)
-    file.close()       
+    file.close()
+    return user       
 #end of write_file
 
 def read_file(user: json) -> json:
