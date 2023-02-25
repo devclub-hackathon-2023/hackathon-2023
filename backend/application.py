@@ -42,10 +42,11 @@ def login():
         else:
             errDict = {"ERROR": "password no worky"}
             data = json.dumps(errDict)
-        resp = json.loads(data)
     else:
         errDict = {"ERROR": "you gave me some bad stuff"}
         data = errDict
+        
+    resp = json.loads(data)
     if(resp["ERROR"]):
         response = app.response_class(response= data, status=403, mimetype = 'application/json')
     else:
