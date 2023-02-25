@@ -18,8 +18,3 @@ def read_file(user: json) -> json:
     except FileNotFoundError:
         return -1
 #end of read_file
-
-john = {"username": "John", "pass": "ILikePasswords"}
-
-create_file(json.dumps(john))
-print(read_file(json.dumps(john)))
