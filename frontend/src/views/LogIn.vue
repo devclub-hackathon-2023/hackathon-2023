@@ -5,14 +5,14 @@
       <label><b>User Name
       </b>
       </label>
-      <input type="text" name="Uname" id="Uname" placeholder="Username">
+      <input type="text" name="Uname" id="Uname" placeholder="Username" v-model="username">
       <br><br>
       <label><b>Password
       </b>
       </label>
-      <input type="Password" name="Pass" id="Pass" placeholder="Password">
+      <input type="Password" name="Pass" id="Pass" placeholder="Password" v-model="password">
       <br><br>
-      <input type="button" name="log" id="log" value="Log In Here">
+      <input type="button" name="log" id="log" value="Log In Here" @click="onLoginCLicked">
       <br><br>
       <input type="checkbox" id="check">
       <span>Remember me</span>
@@ -28,9 +28,26 @@
 
 <script>
 export default {
-name: 'HomeView',
+  name: 'HomeView',
+  data() {
+    return {
+      username: "",
+      password: "",
+    }
+  },
+  methods: {
+    async onLoginCLicked() {
+      console.log("Username: " + this.username + " | Password: " + this.password)
+
+      const result = await (await fetch("localhost:5000/api/account/login", {"username": this.username, "password": this.password})).json()
+
+      console.log("result: " + result)
+
+    }
+  }
 }
 </script>
+
 <style>
 body
 {

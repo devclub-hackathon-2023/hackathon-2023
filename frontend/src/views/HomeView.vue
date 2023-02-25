@@ -45,12 +45,13 @@ export default {
 <style>
 
 .welcomeContainer {
-  width: 60%;
+  width: 382px;
   overflow: hidden;
   margin: auto;
-  padding: 40px;
-  background: grey;
-  border-radius: 15px;
+  margin: 20 0 0 450px;
+  padding: 80px;
+  background: #0c0f0e;
+  border-radius: 15px ;
 }
 
 .homeButton {
@@ -64,9 +65,9 @@ export default {
 }
 
 .welcomeTxt {
-    text-align: center;
-    color: black;
-    padding: 24px;
+  text-align: center;
+  color: #5d2901;
+  padding: 20px;
 }
 
 </style>
