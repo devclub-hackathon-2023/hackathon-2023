@@ -1,8 +1,9 @@
 <template>
   <nav>
     <router-link to="/">Home</router-link> |
-    <router-link to= "/todos">Lists</router-link> |
-    <router-link to= "/points">Points</router-link>
+    <router-link to="/todos">Lists</router-link> |
+    <router-link to="/points">Points</router-link> |
+    <router-link to="/login">Login</router-link>
   </nav>
   <router-view/>
  
@@ -34,6 +35,11 @@ nav a {
 
 nav a.router-link-exact-active {
   color: goldenrod;
+}
+
+body
+{
+    background-image: "./assets/honey-background.jpg";
 }
 
 </style>
