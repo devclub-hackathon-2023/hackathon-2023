@@ -14,10 +14,12 @@ def hello_world():
 
 @app.post("/api/account/create_account")
 def create_account():
-    # username = request.get_json()["username"]
-    # password = request.get_json()["password"]
-    # session_cookie = # create cookie
+    username = request.get_json()["username"]
+    password = request.get_json()["password"]
+    user_dict = {"username": username, "pass": password}
+    fileIO.create_file(json.dumps(user_dict))
     return "woohoo this thing is working"
 
-# @app.get("/api/account/login")
-# def login():
+@app.get("/api/account/login")
+def login():
+    pass
