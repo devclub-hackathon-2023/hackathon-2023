@@ -45,11 +45,6 @@ def login():
     
     return app.response_class(response= data, status=200, mimetype = 'application/json')
 
-@app.post("/api/todo/")
-def add_todo():
-    userID = request.get_json()["userID"]
->>>>>>> a965b443e8663c237c71a3b998a4688f4e9993ff
-
 @app.post('/api/add_todo')
 def add_todo():
     userID = request.get_json()["userID"]
