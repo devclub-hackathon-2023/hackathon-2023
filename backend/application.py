@@ -26,8 +26,11 @@ def login():
     password = request.get_json()["password"]
     user_dict = {"username": username, "pass": password}
     user_dict = json.dumps(user_dict)
-    user_file = json.load(fileIO.read_file(user_dict))
-    if password == user_file["pass"]:
+    user_file = fileIO.read_file(user_dict)
+    if(user_file == -1):
+        return "Error, user not instantiated"
+    user_dict = json.load(user_file)
+    if password == user_dict["pass"]:
         return user_file
     else:
-        return "some error"
+        return "Error, user password did not match"
