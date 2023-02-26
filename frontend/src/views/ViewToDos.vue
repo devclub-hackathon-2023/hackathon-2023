@@ -61,17 +61,17 @@ export default
     async onDeleteTask(task) {
       console.log("delete task: " + task)
       
-      const requestOptions = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userID: this.$store.state.userID, taskname: task })
-      };
+      // const requestOptions = {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify({ userID: this.$store.state.userID, taskname: task })
+      // };
 
-      const result = await fetch("http://127.0.0.1:5000/api/add_todo", requestOptions)
+      // const result = await fetch("http://127.0.0.1:5000/api/add_todo", requestOptions)
 
-      console.log("tasks: " + result.json())
+      // console.log("tasks: " + result.json())
 
-      this.tasks = result.json()
+      this.tasks = [{complete: false, text: "default task" }, {complete: true, text: "default task 2" }]
     }
   }
 }
