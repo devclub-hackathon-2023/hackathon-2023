@@ -1,14 +1,8 @@
 <template>
-  <div>
-    <input type = "checkbox" v-model = task.complete @click= "onCheckBoxClicked">
-    {{ addtxt }} 
 
-    <!-- <input type="checkbox" v-bind="complete"/> -->
-    <!-- <h2>{{ text }}</h2> -->
-
-    <span>{{ task.complete}} | {{ task.text }} </span>
-    <div v-if="task.complete"> </div>
-    <span>{{ task.complete }} | {{ task.text }}</span>
+  <div v-if="task.complete" class="taskContainer">
+    <span class="deleteIcon" @click= "onDeleteClicked"> [x] </span>
+    <span class="taskText">{{ task.text }}</span>
 
   </div>
 </template>
@@ -30,14 +24,33 @@ export default
   },
   methods: 
   {
-      onCheckBoxClicked() 
+      onDeleteClicked() 
       {
+<<<<<<< HEAD
         console.log("CheckBox clicked!")
+=======
+        console.log("deleting task...")
+        this.$emit("deleteTask", this.task.text)
+>>>>>>> e8a71addb0a34b5cfdad020104c2c336ca98f0b3
       },
   },
 }
 </script>
 
 <style>
-  
+.deleteIcon {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.taskText {
+  font-size: 20px;
+  padding-left: 5px;
+}
+
+.taskContainer {
+  margin-left: 45%;
+  display: flex;
+  padding: 10px;
+}
 </style>

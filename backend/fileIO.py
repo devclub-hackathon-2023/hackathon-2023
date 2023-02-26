@@ -1,12 +1,13 @@
 import json
 import uuid
+USER_DIRECTORY = './users/'
 
 #user will be user{username: "", pass: ""}
 def create_file(user: json) -> json:
     userDict = json.loads(user)
     userDict["userID"] = str(uuid.uuid4())
     user = json.dumps(userDict)
-    file = open(userDict['username'] + '.json', 'w')
+    file = open(USER_DIRECTORY + userDict['username'] + '.json', 'w')
     file.write(user)
     file.close()
     return user       

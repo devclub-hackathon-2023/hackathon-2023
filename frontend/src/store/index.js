@@ -2,7 +2,7 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    userID: 0
+    userID: 0,
   },
   getters: {
   },

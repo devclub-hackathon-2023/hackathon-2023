@@ -1,8 +1,8 @@
 <template>
   <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/ViewToDos">Lists</router-link> |
-    <router-link to="/points">Points</router-link> |
+    <router-link to="/">Home</router-link> 
+    <router-link to="/ViewToDos">Lists</router-link> 
+    <router-link to="/points">Points</router-link> 
     <router-link to="/login">Login</router-link>
   </nav>
   <div>
@@ -17,11 +17,15 @@ export default {
 </script>
 
 <style>
+body {
+  background-image: "";
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  font-size: 20px;
   color: black;
 }
 
@@ -31,7 +35,9 @@ nav {
 
 nav a {
   font-weight: bold;
+
   color: goldenrod;
+
 }
 
 nav a.router-link-exact-active {

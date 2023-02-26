@@ -1,7 +1,6 @@
 <template>
-  <div>
-    Points
-  </div>
+  <h1 class="PointsTxt"> {{ PointsTxt }} </h1>
+ 
 </template>
 
 
@@ -9,11 +8,19 @@
 
 export default {
   name: 'PtsView',
-  components: {
-    // imported component declarations
+  
+  data(){
+    return{
+      PointsTxt: "Congratulations you have successfully completed some tasks from your list",
+    }
   },
 }
 </script>
 
 <style>
+.PointsTxt {
+  text-align: center;
+  color: #5d2901;
+  padding: 25px;
+}
 </style>
