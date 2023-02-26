@@ -69,8 +69,10 @@ def todo():
 
     userFile = json.loads(userFile)
     userFile[taskname] = taskvalue
-
-    return "it worked!"
+    data = fileIO.create_file(json.dumps(json))
+    data = userFile
+    response = app.response_class(response= data, status=200, mimetype = 'application/json')
+    return response
 
 def find_username_by_id(userID):
     if not os.path.exists(USER_DIRECTORY):
