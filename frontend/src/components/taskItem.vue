@@ -1,7 +1,7 @@
 <template>
 
   <div v-if="task.complete" class="taskContainer">
-    <span class="deleteIcon" @click= "onDeleteClicked"> [x] </span>
+    <span class="deleteIcon" @click= "onDeleteClicked"> <input type = "checkbox">  </span>
     <span class="taskText">{{ task.text }}</span>
 
   </div>
@@ -26,12 +26,7 @@ export default
   {
       onDeleteClicked() 
       {
-<<<<<<< HEAD
         console.log("CheckBox clicked!")
-=======
-        console.log("deleting task...")
-        this.$emit("deleteTask", this.task.text)
->>>>>>> e8a71addb0a34b5cfdad020104c2c336ca98f0b3
       },
   },
 }
