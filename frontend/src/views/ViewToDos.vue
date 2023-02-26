@@ -4,7 +4,7 @@
       <h1>Your To Do List:</h1>
     </div>
 
-    <taskItem v-for="task in tasks" :task="task" :key="task.id"/>
+    <taskItem v-for="task in tasks" :task="task" :key="task.id" @deleteTask="onDeleteTask"/>
 
     <div class="checklist">
       <br>
@@ -35,7 +35,7 @@ export default
   data()
   {
     return {
-      tasks: [{complete: false, text: "default task" }, {complete: false, text: "default task 2" }],
+      tasks: [{complete: true, text: "default task" }, {complete: true, text: "default task 2" }],
       newTask: "",
       welcomeTxt: "Select/Create a To-Do-List:",
       addtxt : "Update List",
@@ -57,6 +57,21 @@ export default
       console.log("tasks: " + result.json())
 
       this.tasks = result.json()
+    },
+    async onDeleteTask(task) {
+      console.log("delete task: " + task)
+      
+      // const requestOptions = {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify({ userID: this.$store.state.userID, taskname: task })
+      // };
+
+      // const result = await fetch("http://127.0.0.1:5000/api/add_todo", requestOptions)
+
+      // console.log("tasks: " + result.json())
+
+      this.tasks = [{complete: false, text: "default task" }, {complete: true, text: "default task 2" }]
     }
   }
 }

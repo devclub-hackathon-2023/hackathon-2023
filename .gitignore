@@ -1,6 +1,5 @@
 package-lock.json
 node_modules
 venv
-__pycache__
+__pycache__/
 *.swp
-__pycache__
