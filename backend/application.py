@@ -54,24 +54,28 @@ def login():
 
     return response
 
-@app.post('/api/add_todo')
-def add_todo():
+@app.post('/api/todo')
+def todo():
     userID = request.get_json()["userID"]
-    find_username_by_id();
-    # username = find_username_by_id()
+    username = find_username_by_id(userID)
+    userFile = fileIO.read_file(username)
     taskname = request.get_json()["taskname"]
-    # fileIO.create_file() # no username found yet
+    taskvalue = request.get_json()["taskvalue"]
+
+    userFile = json.loads(userFile)
+    userFile[taskname] = taskvalue
+
     return "it worked!"
 
-def find_username_by_id():
+def find_username_by_id(userID):
     if not os.path.exists(USER_DIRECTORY):
         os.makedirs(USER_DIRECTORY)
-    for file in (os.listdir(USER_DIRECTORY)):
+    #
+    for filename in (os.listdir(USER_DIRECTORY)):
         print(os.listdir(USER_DIRECTORY))
-        file = file.strip('.json')
-        print(file)
-        dict = {"username": file}
-        userID_to_compare = fileIO.read_file(json.dumps(dict))
-        userID_to_compare = json.loads(userID_to_compare)
-        print(userID_to_compare) # DEBUG
-    # for file in os.listdir(USER_DIRECTORY):
+        filename = filename.strip('.json')
+        dict = {"username": filename}
+        userFile = fileIO.read_file(json.dumps(dict))
+        userFile = json.loads(userFile)
+        if(str(userFile["userID"]) == str(userID)):
+            return userFile["username"]
