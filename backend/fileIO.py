@@ -5,7 +5,11 @@ USER_DIRECTORY = './users/'
 #user will be user{username: "", pass: ""}
 def create_file(user: json) -> json:
     userDict = json.loads(user)
-    userDict["userID"] = str(uuid.uuid4())
+    try:
+        if(userDict["userID"] is not None):
+            pass
+    except KeyError:
+        userDict["userID"] = str(uuid.uuid4())
     user = json.dumps(userDict)
     file = open(USER_DIRECTORY + userDict['username'] + '.json', 'w')
     file.write(user)
