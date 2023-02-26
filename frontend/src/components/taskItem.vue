@@ -1,17 +1,30 @@
 <template>
+<<<<<<< HEAD
   <div v-if="!task.complete" class="taskContainer">
+=======
+
+  <div v-if="task.complete" class="taskContainer">
+>>>>>>> 17f4340eb4ed9f2643dbfb6c6f073f56066c0c9d
     <span class="deleteIcon" @click= "onDeleteClicked"> [x] </span>
     <span class="taskText">{{ task.text }}</span>
+
   </div>
 </template>
 
 <script>
+
 export default 
 {
   name: "TaskItem",
   props: 
   {
     task: Object,
+  },
+  data()
+  {
+    return{
+      thing: this.Object,
+    }
   },
   methods: 
   {
