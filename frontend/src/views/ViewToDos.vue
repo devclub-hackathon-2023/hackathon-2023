@@ -3,9 +3,9 @@
     <div class= "ViewToDos">
       <h1>Your To Do List:</h1>
     </div>
-
-    <taskItem v-for="task in tasks" :task="task" :key="task.id" @deleteTask="onDeleteTask"/>
-
+    <div class ="taskThing">
+      <taskItem v-for="task in tasks" :task="task" :key="task.id" @deleteTask="onDeleteTask"/>
+    </div>
     <div class="checklist">
       <br>
 
@@ -15,7 +15,7 @@
 
       <button value="add task" @click="onAddTaskClicked"> {{ addtxt }} </button><br><br>
       <input type ="checkbox">
-      {{ tasks }}
+
       <br><br>
     </div>
   <div id = "textAdded">
@@ -101,9 +101,18 @@ export default
 <style>
 .ViewToDos
 {
-  background: goldenrod;
   font-size: 16px;
   font-family: sans-serif;
+}
+.taskThing
+{
+    width: 300px;
+    overflow: hidden;
+    margin: auto;
+    margin: 5 20 0 100px;
+    padding: 50px;
+    background: rgb(163, 79, 26);
+    border-radius: 15px ;
 }
 
 </style>
