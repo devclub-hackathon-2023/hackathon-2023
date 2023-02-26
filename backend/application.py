@@ -70,7 +70,6 @@ def todo():
     userFile = json.loads(userFile)
     userFile[taskname] = taskvalue
     data = fileIO.create_file(json.dumps(userFile))
-    data = userFile
     response = app.response_class(response= data, status=200, mimetype = 'application/json')
     return response
 
