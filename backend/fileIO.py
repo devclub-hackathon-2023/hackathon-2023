@@ -16,7 +16,7 @@ def create_file(user: json) -> json:
 def read_file(user: json) -> json:
     userDict = json.loads(user)
     try:
-        file = open(userDict['username'] + '.json', 'r')
+        file = open(USER_DIRECTORY + userDict['username'] + '.json', 'r')
         usersFile = file.read()
         file.close()
         return usersFile

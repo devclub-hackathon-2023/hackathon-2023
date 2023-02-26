@@ -44,12 +44,16 @@ def login():
             data = json.dumps(errDict)
     else:
         errDict = {"ERROR": "you gave me some bad stuff"}
-        data = errDict
+        data = json.dumps(errDict)
         
     resp = json.loads(data)
-    if(resp["ERROR"]):
-        response = app.response_class(response= data, status=403, mimetype = 'application/json')
-    else:
+    print(resp)
+    try :
+        if(resp["ERROR"] is not None):
+            response = app.response_class(response= data, status=403, mimetype = 'application/json')
+        else:
+            response = app.response_class(response= data, status=200, mimetype = 'application/json')
+    except KeyError:
         response = app.response_class(response= data, status=200, mimetype = 'application/json')
 
     return response
@@ -58,7 +62,8 @@ def login():
 def todo():
     userID = request.get_json()["userID"]
     username = find_username_by_id(userID)
-    userFile = fileIO.read_file(username)
+    username = {"username": username}
+    userFile = fileIO.read_file(json.dumps(username))
     taskname = request.get_json()["taskname"]
     taskvalue = request.get_json()["taskvalue"]
 
