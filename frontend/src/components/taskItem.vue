@@ -1,9 +1,7 @@
 <template>
-
   <div v-if="!task.complete" class="taskContainer">
-    <span class="deleteIcon" @click= "onDeleteClicked"> <input type = "checkbox">  </span>
+    <span class="deleteIcon" @click= "onDeleteClicked"> <input type="checkbox"> </span>
     <span class="taskText">{{ task.text }}</span>
-
   </div>
 </template>
 

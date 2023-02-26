@@ -11,16 +11,18 @@
 
       <h1>Add new task to list:</h1>
       <input type= "text" id="add" v-model="newTask.text">
+
       <br><br>
 
       <button value="add task" @click="onAddTaskClicked"> {{ addtxt }} </button><br><br>
-      <input type ="checkbox">
+
+      {{ tasks }}
 
       <br><br>
     </div>
   <div id = "textAdded">
 
-  </div>    
+  </div>
 </template>
 
 <script>
@@ -53,25 +55,31 @@ export default
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userID: this.$store.state.userID, taskname: this.newTask.text, taskvalue: false })
-      };
+      };  
 
       
-      await fetch("http://127.0.0.1:5000/api/todo", requestOptions)
+      await fetch("http://127.0.0.1:5000/api/todo", requestOptions).then((response) => response.json())
       .then((response) => {
         return response
         })
         .then((result) => {
           console.log("tasks: " + result)
-          this.tasks = result
+
+          delete result["username"]
+          delete result["pass"]
+          delete result["userID"]
+          let keys = Object.keys(result)
+          let values = Object.values(result)
+
+          for (let i = 0; i < keys.length; i++) {
+            console.log("key: " + keys[i])
+            console.log("value: " + values[i])
+            this.tasks.push({ complete: (values[i] == 'true'), text: keys[i]})
+          }
         })
         .catch((error) => {
           console.log("error: " + error)
         })
-
-      // let newText = this.newTask.text
-      // this.tasks.push({complete: false, text: newText})
-      // this.newTask.text = ""
-
     },
     async onDeleteTask(task) {
       console.log("delete task: " + task)
@@ -82,7 +90,7 @@ export default
         body: JSON.stringify({ userID: this.$store.state.userID, taskname: task, taskvalue: true })
       };
 
-      await fetch("http://127.0.0.1:5000/api/todo", requestOptions)
+      await fetch("http://127.0.0.1:5000/api/todo", requestOptions).then((response) => response.json())
       .then((response) => {
         return response
         })
