@@ -35,8 +35,11 @@ export default
   data()
   {
     return {
-      tasks: [{complete: true, text: "default task" }, {complete: true, text: "default task 2" }],
-      newTask: "",
+      tasks: [],
+      newTask: {
+        complete: false,
+        text: "",
+      },
       welcomeTxt: "Select/Create a To-Do-List:",
       addtxt : "Update List",
     }
@@ -49,29 +52,47 @@ export default
       const requestOptions = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userID: this.$store.state.userID, taskname: this.newTask })
+        body: JSON.stringify({ userID: this.$store.state.userID, taskname: this.newTask.text, taskvalue: false })
       };
 
-      const result = await fetch("http://127.0.0.1:5000/api/add_todo", requestOptions)
+      
+      await fetch("http://127.0.0.1:5000/api/todo", requestOptions)
+      .then((response) => {
+        return response
+        })
+        .then((result) => {
+          console.log("tasks: " + result)
+          this.tasks = result
+        })
+        .catch((error) => {
+          console.log("error: " + error)
+        })
 
-      console.log("tasks: " + result.json())
+      // let newText = this.newTask.text
+      // this.tasks.push({complete: false, text: newText})
+      // this.newTask.text = ""
 
-      this.tasks = result.json()
     },
     async onDeleteTask(task) {
       console.log("delete task: " + task)
       
-      // const requestOptions = {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify({ userID: this.$store.state.userID, taskname: task })
-      // };
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userID: this.$store.state.userID, taskname: task, taskvalue: true })
+      };
 
-      // const result = await fetch("http://127.0.0.1:5000/api/add_todo", requestOptions)
-
-      // console.log("tasks: " + result.json())
-
-      this.tasks = [{complete: false, text: "default task" }, {complete: true, text: "default task 2" }]
+      await fetch("http://127.0.0.1:5000/api/todo", requestOptions)
+      .then((response) => {
+        return response
+        })
+        .then((result) => {
+          console.log("tasks: " + result)
+          this.tasks = result
+        })
+        .catch((error) => {
+          console.log("error: " + error)
+        })
     }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="task.complete" class="taskContainer">
+  <div v-if="!task.complete" class="taskContainer">
     <span class="deleteIcon" @click= "onDeleteClicked"> [x] </span>
     <span class="taskText">{{ task.text }}</span>
   </div>
